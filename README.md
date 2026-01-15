@@ -29,7 +29,7 @@ git config --global commit.gpgsign true
 On Unix-like shells (Git Bash, WSL, macOS Terminal) you may create a Git alias that sets the identity for the current repository:
 
 ```bash
-git config --global alias.identity '!sh -c "git config user.name \"$(git config user.$1.name)\" && git config user.email \"$(git config user.$1.email)\" && git config user.signingkey \"$(git config user.$1.signingkey)\"" -'
+git config --global alias.identity '!git config user.name "$(git config user.$1.name)"; git config user.email "$(git config user.$1.email)"; git config user.signingkey "$(git config user.$1.signingkey)"; :'
 ```
 
 Usage (in a repo):
