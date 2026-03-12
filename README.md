@@ -1,6 +1,30 @@
-# Git-Multi-User-with-SSH-and-Remotes
+# Git Multi User
 
-This guide walks you through setting up multiple Git identities with SSH signing and remotes. It covers generating SSH keys, configuring per-identity Git settings (including SSH commit signing), and connecting those identities to hosting services such as GitHub.
+This guide walks you through setting up multiple Git identities with SSH signing and remotes. It covers generating SSH keys, configuring per-identity Git settings (including SSH commit signing), and connecting those identities to hosting services such as GitHub and GitLab.
+
+## Contents
+
+- [Git Multi User](#git-multi-user)
+  - [Contents](#contents)
+  - [Setup](#setup)
+    - [SSH signing](#ssh-signing)
+    - [Aliases to switch identities](#aliases-to-switch-identities)
+  - [Creating identities](#creating-identities)
+    - [Generating an SSH key pair](#generating-an-ssh-key-pair)
+    - [Configuring an identity](#configuring-an-identity)
+  - [Connecting to hosting services](#connecting-to-hosting-services)
+    - [SSH host entries](#ssh-host-entries)
+    - [Popular hosting services](#popular-hosting-services)
+      - [GitHub: Add SSH keys](#github-add-ssh-keys)
+      - [GitLab: Add SSH keys](#gitlab-add-ssh-keys)
+      - [Codeberg: Add SSH keys](#codeberg-add-ssh-keys)
+    - [Verify connection](#verify-connection)
+  - [Tips](#tips)
+  - [Example](#example)
+    - [Generating SSH key pairs](#generating-ssh-key-pairs)
+    - [Configuring identities](#configuring-identities)
+    - [Connecting to hosting services](#connecting-to-hosting-services-1)
+  - [References](#references)
 
 ## Setup
 
@@ -10,7 +34,7 @@ If you want Git to refuse to make commits unless you have explicitly set your id
 git config --global user.useConfigOnly true
 ```
 
-### SSH Signing
+### SSH signing
 
 To tell Git to use SSH as the commit-signing backend:
 
@@ -111,13 +135,11 @@ To now reference a repository (e.g. for cloning), use `git@<connection>:owner/re
 #### GitHub: Add SSH keys
 
 1. Go to **Settings → Access → SSH and GPG keys** and add a new SSH key with the following properties:
-
    - **Title**: Name the connection
    - **Key Type**: Authentication Key
    - **Key**: Paste the public SSH key
 
 2. Add another SSH key:
-
    - **Title**: Name the connection
    - **Key Type**: Signing Key
    - **Key**: Paste the public SSH key
@@ -125,7 +147,6 @@ To now reference a repository (e.g. for cloning), use `git@<connection>:owner/re
 #### GitLab: Add SSH keys
 
 1. Go to **Edit profile → SSH Keys** and add a new SSH key with the following properties:
-
    - **Title**: Name the connection
    - **Usage type**: Authentication & Signing
    - **Key**: Paste the public SSH key
@@ -133,7 +154,6 @@ To now reference a repository (e.g. for cloning), use `git@<connection>:owner/re
 #### Codeberg: Add SSH keys
 
 1. Go to **Settings → SSH / GPG Keys** and add a new SSH key with the following properties:
-
    - **Key name**: Name the connection
    - **Content**: Paste the public SSH key
 
@@ -217,13 +237,11 @@ Host gitlab-personal
 In the business **GitHub** account:
 
 1. **Settings → Access → SSH and GPG keys** and add a new SSH key:
-
    - **Title**: Mike's PC
    - **Key Type**: Authentication Key
    - **Key**: Content of ~/.ssh/id_25519_business.pub
 
 2. Add another SSH key:
-
    - **Title**: Mike's PC
    - **Key Type**: Signing Key
    - **Key**: Content of ~/.ssh/id_25519_business.pub
@@ -231,13 +249,11 @@ In the business **GitHub** account:
 In the personal **GitHub** account:
 
 1. **Settings → Access → SSH and GPG keys** and add a new SSH key:
-
    - **Title**: Mike's PC
    - **Key Type**: Authentication Key
    - **Key**: Content of ~/.ssh/id_25519_personal.pub
 
 2. Add another SSH key:
-
    - **Title**: Mike's PC
    - **Key Type**: Signing Key
    - **Key**: Content of ~/.ssh/id_25519_personal.pub
@@ -245,7 +261,6 @@ In the personal **GitHub** account:
 In the personal **GitLab** account:
 
 1. **Edit profile → SSH Keys** and add a new SSH key:
-
    - **Title**: Mike's PC
    - **Usage type**: Authentication & Signing
    - **Key**: Content of ~/.ssh/id_25519_personal.pub
